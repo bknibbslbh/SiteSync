@@ -15,6 +15,7 @@ import SettingsPage from './pages/SettingsPage';
 import HelpPage from './pages/HelpPage';
 import PrivacyPage from './pages/PrivacyPage';
 import TermsPage from './pages/TermsPage';
+import TeamAccessPage from './pages/TeamAccessPage';
 
 // Components
 import Loading from './components/ui/Loading';
@@ -115,6 +116,12 @@ function App() {
       <Route path="/settings" element={
         <ProtectedRoute>
           <SettingsPage />
+        </ProtectedRoute>
+      } />
+
+      <Route path="/team" element={
+        <ProtectedRoute>
+          <TeamAccessPage />
         </ProtectedRoute>
       } />
 

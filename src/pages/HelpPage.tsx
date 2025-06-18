@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Layout from '../components/layout/Layout';
 import Card, { CardHeader, CardBody } from '../components/ui/Card';
 import Input from '../components/ui/Input';
@@ -77,15 +78,17 @@ const HelpPage: React.FC = () => {
 
           {/* Quick Links */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <Card className="hover:shadow-lg transition-shadow duration-300 cursor-pointer">
-              <CardBody className="text-center p-6">
-                <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Book size={24} className="text-primary-600" />
-                </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">User Guide</h3>
-                <p className="text-gray-600 text-sm">Complete guide on how to use SiteSync</p>
-              </CardBody>
-            </Card>
+            <Link to="/dashboard">
+              <Card className="hover:shadow-lg transition-shadow duration-300 cursor-pointer">
+                <CardBody className="text-center p-6">
+                  <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Book size={24} className="text-primary-600" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">User Guide</h3>
+                  <p className="text-gray-600 text-sm">Complete guide on how to use SiteSync</p>
+                </CardBody>
+              </Card>
+            </Link>
 
             <Card className="hover:shadow-lg transition-shadow duration-300 cursor-pointer">
               <CardBody className="text-center p-6">
@@ -156,7 +159,7 @@ const HelpPage: React.FC = () => {
             <div className="space-y-2">
               <p className="text-gray-600">
                 Email us at{' '}
-                <a href="mailto:support@sitesync.com" className="text-primary-600 hover:text-primary-800">
+                <a href="mailto:support@sitesync.live" className="text-primary-600 hover:text-primary-800">
                   support@sitesync.live
                 </a>
               </p>

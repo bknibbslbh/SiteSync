@@ -247,7 +247,7 @@ const DashboardPage: React.FC = () => {
             </Card>
           )}
           
-          <Card className="hover:shadow-lg transition-shadow duration-300 cursor-pointer">
+          <Card className="hover:shadow-lg transition-shadow duration-300 cursor-pointer" onClick={() => navigate('/team')}>
             <CardBody className="p-4 flex items-center">
               <div className="rounded-full bg-gray-100 p-2 mr-3">
                 <Users size={20} className="text-gray-700" />

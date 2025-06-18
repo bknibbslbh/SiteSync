@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ClipboardCheck, Github, Mail, Phone } from 'lucide-react';
 
 const Footer: React.FC = () => {
@@ -24,16 +25,16 @@ const Footer: React.FC = () => {
             <h4 className="text-white font-medium mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li>
-                <a href="/" className="text-primary-300 hover:text-white transition-colors">Home</a>
+                <Link to="/dashboard" className="text-primary-300 hover:text-white transition-colors">Dashboard</Link>
               </li>
               <li>
-                <a href="/dashboard" className="text-primary-300 hover:text-white transition-colors">Dashboard</a>
+                <Link to="/logbook" className="text-primary-300 hover:text-white transition-colors">Logbook</Link>
               </li>
               <li>
-                <a href="/logbook" className="text-primary-300 hover:text-white transition-colors">Logbook</a>
+                <Link to="/scan" className="text-primary-300 hover:text-white transition-colors">Scan QR</Link>
               </li>
               <li>
-                <a href="/scan" className="text-primary-300 hover:text-white transition-colors">Scan QR</a>
+                <Link to="/team" className="text-primary-300 hover:text-white transition-colors">Team Access</Link>
               </li>
             </ul>
           </div>
@@ -43,16 +44,13 @@ const Footer: React.FC = () => {
             <h4 className="text-white font-medium mb-4">Resources</h4>
             <ul className="space-y-2">
               <li>
-                <a href="/help" className="text-primary-300 hover:text-white transition-colors">Help Center</a>
+                <Link to="/help" className="text-primary-300 hover:text-white transition-colors">Help Center</Link>
               </li>
               <li>
-                <a href="/faq" className="text-primary-300 hover:text-white transition-colors">FAQs</a>
+                <Link to="/privacy" className="text-primary-300 hover:text-white transition-colors">Privacy Policy</Link>
               </li>
               <li>
-                <a href="/privacy" className="text-primary-300 hover:text-white transition-colors">Privacy Policy</a>
-              </li>
-              <li>
-                <a href="/terms" className="text-primary-300 hover:text-white transition-colors">Terms of Service</a>
+                <Link to="/terms" className="text-primary-300 hover:text-white transition-colors">Terms of Service</Link>
               </li>
             </ul>
           </div>
@@ -75,7 +73,7 @@ const Footer: React.FC = () => {
               </li>
               <li className="flex items-center">
                 <Github size={16} className="mr-2" />
-                <a href="https://github.com/sitesync" className="text-primary-300 hover:text-white transition-colors">
+                <a href="https://github.com/sitesync" className="text-primary-300 hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">
                   GitHub
                 </a>
               </li>
