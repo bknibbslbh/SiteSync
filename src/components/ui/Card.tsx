@@ -14,12 +14,12 @@ const Card: React.FC<CardProps> = ({
   hover = false,
 }) => {
   const hoverClasses = hover 
-    ? 'hover:shadow-lg transition-shadow duration-300 cursor-pointer' 
+    ? 'hover:shadow-xl transition-all duration-300 cursor-pointer hover:scale-105' 
     : '';
 
   return (
     <div 
-      className={`bg-white rounded-lg shadow-md overflow-hidden ${hoverClasses} ${className}`} 
+      className={`bg-white rounded-xl shadow-lg overflow-hidden ${hoverClasses} ${className}`} 
       onClick={onClick}
     >
       {children}

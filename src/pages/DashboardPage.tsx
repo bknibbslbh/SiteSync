@@ -65,7 +65,7 @@ const DashboardPage: React.FC = () => {
       <Layout>
         <div className="container mx-auto py-8 px-4">
           <div className="flex justify-center items-center h-64">
-            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary-500"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-electric-500"></div>
           </div>
         </div>
       </Layout>
@@ -77,11 +77,12 @@ const DashboardPage: React.FC = () => {
       <div className="container mx-auto py-8 px-4">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
-            <p className="text-gray-600">Welcome back, {currentUser?.name}</p>
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-electric-600 to-electric-400 bg-clip-text text-transparent">Dashboard</h1>
+            <p className="text-gray-600">Welcome back, <span className="font-medium text-electric-600">{currentUser?.name}</span></p>
           </div>
           <div className="mt-4 md:mt-0">
             <Button 
+              variant="electric"
               onClick={() => navigate('/scan')}
               leftIcon={<QrCode size={18} />}
             >
@@ -92,38 +93,38 @@ const DashboardPage: React.FC = () => {
         
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-          <Card className="bg-primary-50">
+          <Card className="bg-gradient-to-br from-electric-50 to-electric-100 border border-electric-200 hover:shadow-xl transition-all duration-300 hover:scale-105">
             <CardBody className="flex items-center p-6">
-              <div className="rounded-full bg-primary-100 p-3 mr-4">
-                <Activity size={24} className="text-primary-700" />
+              <div className="rounded-full bg-gradient-to-br from-electric-400 to-electric-600 p-3 mr-4 shadow-lg">
+                <Activity size={24} className="text-white" />
               </div>
               <div>
-                <p className="text-sm text-gray-600 font-medium">Active Visits</p>
-                <p className="text-2xl font-bold text-primary-800">{activeVisits.length}</p>
+                <p className="text-sm text-electric-700 font-medium">Active Visits</p>
+                <p className="text-3xl font-bold text-electric-800">{activeVisits.length}</p>
               </div>
             </CardBody>
           </Card>
           
-          <Card className="bg-secondary-50">
+          <Card className="bg-gradient-to-br from-secondary-50 to-secondary-100 border border-secondary-200 hover:shadow-xl transition-all duration-300 hover:scale-105">
             <CardBody className="flex items-center p-6">
-              <div className="rounded-full bg-secondary-100 p-3 mr-4">
-                <ClipboardCheck size={24} className="text-secondary-700" />
+              <div className="rounded-full bg-gradient-to-br from-secondary-400 to-secondary-600 p-3 mr-4 shadow-lg">
+                <ClipboardCheck size={24} className="text-white" />
               </div>
               <div>
-                <p className="text-sm text-gray-600 font-medium">Total Visits</p>
-                <p className="text-2xl font-bold text-secondary-800">{totalVisits}</p>
+                <p className="text-sm text-secondary-700 font-medium">Total Visits</p>
+                <p className="text-3xl font-bold text-secondary-800">{totalVisits}</p>
               </div>
             </CardBody>
           </Card>
           
-          <Card className="bg-accent-50">
+          <Card className="bg-gradient-to-br from-accent-50 to-accent-100 border border-accent-200 hover:shadow-xl transition-all duration-300 hover:scale-105">
             <CardBody className="flex items-center p-6">
-              <div className="rounded-full bg-accent-100 p-3 mr-4">
-                <Building size={24} className="text-accent-700" />
+              <div className="rounded-full bg-gradient-to-br from-accent-400 to-accent-600 p-3 mr-4 shadow-lg">
+                <Building size={24} className="text-white" />
               </div>
               <div>
-                <p className="text-sm text-gray-600 font-medium">Managed Sites</p>
-                <p className="text-2xl font-bold text-accent-800">{totalSites}</p>
+                <p className="text-sm text-accent-700 font-medium">Managed Sites</p>
+                <p className="text-3xl font-bold text-accent-800">{totalSites}</p>
               </div>
             </CardBody>
           </Card>
@@ -133,14 +134,15 @@ const DashboardPage: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Recent Activity */}
           <div className="lg:col-span-2">
-            <Card className="h-full">
-              <CardHeader className="flex justify-between items-center">
-                <h2 className="text-lg font-semibold text-gray-900">Recent Activity</h2>
+            <Card className="h-full shadow-xl border border-electric-100">
+              <CardHeader className="flex justify-between items-center bg-gradient-to-r from-electric-50 to-electric-100">
+                <h2 className="text-lg font-semibold text-electric-900">Recent Activity</h2>
                 <Button 
                   variant="ghost" 
                   size="sm" 
                   onClick={() => navigate('/logbook')}
                   rightIcon={<ArrowRight size={16} />}
+                  className="text-electric-600 hover:text-electric-700"
                 >
                   View All
                 </Button>
@@ -154,10 +156,10 @@ const DashboardPage: React.FC = () => {
                 ) : (
                   <div className="divide-y divide-gray-100">
                     {recentEntries.map((entry) => (
-                      <div key={entry.id} className="p-4 hover:bg-gray-50 transition-colors cursor-pointer" onClick={() => navigate(`/logbook`)}>
+                      <div key={entry.id} className="p-4 hover:bg-electric-50 transition-colors cursor-pointer group" onClick={() => navigate(`/logbook`)}>
                         <div className="flex justify-between items-start mb-2">
                           <div>
-                            <h3 className="font-medium text-gray-900">{entry.siteName}</h3>
+                            <h3 className="font-medium text-gray-900 group-hover:text-electric-700 transition-colors">{entry.siteName}</h3>
                             <p className="text-sm text-gray-500">{entry.engineerName}</p>
                           </div>
                           <Badge 
@@ -182,23 +184,23 @@ const DashboardPage: React.FC = () => {
           
           {/* Monthly Visits Chart */}
           <div>
-            <Card className="h-full">
-              <CardHeader>
-                <h2 className="text-lg font-semibold text-gray-900">Monthly Visits</h2>
+            <Card className="h-full shadow-xl border border-electric-100">
+              <CardHeader className="bg-gradient-to-r from-electric-50 to-electric-100">
+                <h2 className="text-lg font-semibold text-electric-900">Monthly Visits</h2>
               </CardHeader>
               <CardBody>
                 <div className="h-64 flex items-end space-x-2">
                   {months.map((month, index) => (
                     <div key={month} className="flex-1 flex flex-col items-center">
                       <div 
-                        className="w-full bg-primary-500 rounded-t-sm" 
+                        className="w-full bg-gradient-to-t from-electric-500 to-electric-400 rounded-t-sm shadow-sm hover:shadow-md transition-shadow" 
                         style={{ 
                           height: `${(counts[index] / maxCount) * 100}%`,
                           minHeight: '4px'
                         }}
                       ></div>
-                      <div className="text-xs text-gray-600 mt-2">{month}</div>
-                      <div className="text-xs font-medium">{counts[index]}</div>
+                      <div className="text-xs text-gray-600 mt-2 font-medium">{month}</div>
+                      <div className="text-xs font-bold text-electric-600">{counts[index]}</div>
                     </div>
                   ))}
                 </div>
@@ -209,10 +211,10 @@ const DashboardPage: React.FC = () => {
         
         {/* Quick Actions */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
-          <Card className="hover:shadow-lg transition-shadow duration-300 cursor-pointer" onClick={() => navigate('/scan')}>
+          <Card className="hover:shadow-xl transition-all duration-300 cursor-pointer hover:scale-105 border border-electric-100" onClick={() => navigate('/scan')}>
             <CardBody className="p-4 flex items-center">
-              <div className="rounded-full bg-primary-100 p-2 mr-3">
-                <QrCode size={20} className="text-primary-700" />
+              <div className="rounded-full bg-gradient-to-br from-electric-400 to-electric-600 p-2 mr-3 shadow-lg">
+                <QrCode size={20} className="text-white" />
               </div>
               <div>
                 <h3 className="font-medium text-gray-900">Scan QR Code</h3>
@@ -221,10 +223,10 @@ const DashboardPage: React.FC = () => {
             </CardBody>
           </Card>
           
-          <Card className="hover:shadow-lg transition-shadow duration-300 cursor-pointer" onClick={() => navigate('/logbook')}>
+          <Card className="hover:shadow-xl transition-all duration-300 cursor-pointer hover:scale-105 border border-secondary-100" onClick={() => navigate('/logbook')}>
             <CardBody className="p-4 flex items-center">
-              <div className="rounded-full bg-secondary-100 p-2 mr-3">
-                <ClipboardCheck size={20} className="text-secondary-700" />
+              <div className="rounded-full bg-gradient-to-br from-secondary-400 to-secondary-600 p-2 mr-3 shadow-lg">
+                <ClipboardCheck size={20} className="text-white" />
               </div>
               <div>
                 <h3 className="font-medium text-gray-900">View Logbook</h3>
@@ -234,10 +236,10 @@ const DashboardPage: React.FC = () => {
           </Card>
           
           {currentUser?.role === 'admin' && (
-            <Card className="hover:shadow-lg transition-shadow duration-300 cursor-pointer" onClick={() => navigate('/admin')}>
+            <Card className="hover:shadow-xl transition-all duration-300 cursor-pointer hover:scale-105 border border-accent-100" onClick={() => navigate('/admin')}>
               <CardBody className="p-4 flex items-center">
-                <div className="rounded-full bg-accent-100 p-2 mr-3">
-                  <Building size={20} className="text-accent-700" />
+                <div className="rounded-full bg-gradient-to-br from-accent-400 to-accent-600 p-2 mr-3 shadow-lg">
+                  <Building size={20} className="text-white" />
                 </div>
                 <div>
                   <h3 className="font-medium text-gray-900">Manage Sites</h3>
@@ -247,10 +249,10 @@ const DashboardPage: React.FC = () => {
             </Card>
           )}
           
-          <Card className="hover:shadow-lg transition-shadow duration-300 cursor-pointer" onClick={() => navigate('/team')}>
+          <Card className="hover:shadow-xl transition-all duration-300 cursor-pointer hover:scale-105 border border-gray-200" onClick={() => navigate('/team')}>
             <CardBody className="p-4 flex items-center">
-              <div className="rounded-full bg-gray-100 p-2 mr-3">
-                <Users size={20} className="text-gray-700" />
+              <div className="rounded-full bg-gradient-to-br from-gray-400 to-gray-600 p-2 mr-3 shadow-lg">
+                <Users size={20} className="text-white" />
               </div>
               <div>
                 <h3 className="font-medium text-gray-900">Team Access</h3>

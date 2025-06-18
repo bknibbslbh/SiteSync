@@ -25,7 +25,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     const widthClass = fullWidth ? 'w-full' : '';
     
     const getInputClasses = () => {
-      const baseClasses = 'block rounded-md shadow-sm border-gray-300 focus:border-primary-500 focus:ring-primary-500 sm:text-sm transition-colors duration-200';
+      const baseClasses = 'block rounded-lg shadow-sm border-gray-300 focus:border-electric-500 focus:ring-electric-500 sm:text-sm transition-all duration-200 hover:border-electric-300';
       const errorClasses = error ? 'border-error-500 focus:border-error-500 focus:ring-error-500' : '';
       const paddingClasses = leftIcon ? 'pl-10' : '';
       
