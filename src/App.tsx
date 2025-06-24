@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useAuthStore } from './stores/authStore';
@@ -26,6 +26,7 @@ import TeamAccessPage from './pages/TeamAccessPage';
 // Components
 import Loading from './components/ui/Loading';
 import NotificationCenter from './components/ui/NotificationCenter';
+import EnvironmentSetup from './components/setup/EnvironmentSetup';
 
 // Create a client
 const queryClient = new QueryClient({
@@ -36,6 +37,17 @@ const queryClient = new QueryClient({
     },
   },
 });
+
+// Check if environment is properly configured
+const isEnvironmentConfigured = () => {
+  const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+  const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+  
+  return supabaseUrl && 
+         supabaseKey && 
+         supabaseUrl !== 'your_supabase_url_here' && 
+         supabaseKey !== 'your_supabase_anon_key_here';
+};
 
 // Protected Route Component
 interface ProtectedRouteProps {
@@ -72,10 +84,29 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
 function App() {
   const { user, currentOrganization, loading, initialized, initialize } = useAuthStore();
   const location = useLocation();
+  const [showEnvironmentSetup, setShowEnvironmentSetup] = useState(false);
 
   useEffect(() => {
+    // Check if environment is configured
+    if (!isEnvironmentConfigured()) {
+      setShowEnvironmentSetup(true);
+      return;
+    }
+
     initialize();
   }, [initialize]);
+
+  // Show environment setup if not configured
+  if (showEnvironmentSetup) {
+    return (
+      <EnvironmentSetup 
+        onComplete={() => {
+          setShowEnvironmentSetup(false);
+          window.location.reload(); // Reload to pick up new env vars
+        }} 
+      />
+    );
+  }
 
   if (!initialized) {
     return (
